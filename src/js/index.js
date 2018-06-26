@@ -1,6 +1,10 @@
 // Global app controller
 import Search from './models/Search';
 
-const search = new Search('pizza');
-console.log(search);
-search.getResults();
+/** Global state of the app
+ * - Search object
+ * - Current recipe object
+ * - Shopping list object
+ * - Liked recipes
+*/
+const state = {};
