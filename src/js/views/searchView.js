@@ -37,7 +37,7 @@ const renderRecipe = recipe => {
     <li>
       <a class="results__link" href="${recipe.recipe_id}">
           <figure class="results__fig">
-              <img src="${recipe.img_url}" alt="${recipe.title}">
+              <img src="${recipe.image_url}" alt="${recipe.title}">
           </figure>
           <div class="results__data">
               <h4 class="results__name">${shortenRecipeTitle(recipe.title)}</h4>
