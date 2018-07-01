@@ -10,7 +10,10 @@ export const clearInput = () => {
 
 // Remove recipes. Used before adding new recipes to the list.
 export const clearResults = () => {
+  // Remove list of recipes.
   elements.searchResultList.innerHTML = '';
+  // Remove pagination buttons.
+  elements.searchResultsPages.innerHTML = '';
 };
 
 // Keep title from overflowing to the next line, but also don't

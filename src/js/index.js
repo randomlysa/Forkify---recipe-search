@@ -38,3 +38,16 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
 });
+
+elements.searchResultsPages.addEventListener('click', e => {
+  // Find the button that was clicked.
+  const button = e.target.closest('.btn-inline');
+  if (button) {
+    // Get the page number associated with the button.
+    const goToPage = parseInt(button.dataset.goto, 10);
+    // Clear recipe list and pagination buttons.
+    searchView.clearResults();
+    // Render results for page 'goToPage.'
+    searchView.renderResults(state.search.result, goToPage);
+  }
+})
