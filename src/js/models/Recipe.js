@@ -22,4 +22,17 @@ export default class Recipe {
       console.log(error);
     }
   } // getRecipe
+
+  calcTime() {
+    // Assuming 15 minutes per 3 ingredients.
+    const numberOFIngredients = this.ingredients.length;
+    const periods = Math.ceil(numberOFIngredients / 3);
+    this.time = periods * 15;
+  };
+
+  calcServings() {
+    this.servings = 4;
+  }
+
+
 } // Recipe class
