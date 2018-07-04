@@ -27,14 +27,19 @@ const controlSearch = async () => {
     searchView.clearResults();
     renderLoader(elements.searchResultsDiv);
 
-    // Search for recipes.
-    await state.search.getResults();
+    try {
+      // Search for recipes.
+      await state.search.getResults();
 
-    // Render results on the UI.
-    // console.log(state.search.result);
-    removeLoader();
-    searchView.renderResults(state.search.result);
-  }
+      // Render results on the UI.
+      // console.log(state.search.result);
+      removeLoader();
+      searchView.renderResults(state.search.result);
+    } catch (error) {
+      removeLoader();
+      alert('Error searching');
+    }
+  } //
 }
 
 elements.searchForm.addEventListener('submit', e => {
