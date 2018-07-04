@@ -66,7 +66,7 @@ export default class Recipe {
         if (arrayCount.length === 1) {
           count = eval(arrIng[0].replace('-', '+'));
         } else {
-          count = eval(arrIng.slice(0, unitIndex.join('+')));
+          count = eval(arrIng.slice(0, unitIndex).join('+'));
         }
 
         objectIngredient = {
