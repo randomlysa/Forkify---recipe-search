@@ -57,6 +57,26 @@ elements.searchResultsPages.addEventListener('click', e => {
 
 
 // Recipe controller.
-const r = new Recipe('47923');
-r.getRecipe();
-console.log(r)
+const controlRecipe = async () => {
+  // Get ID from url hash.
+  const id = window.location.hash.replace('#', '');
+
+  if (id) {
+    // Prepare the UI for changes.
+
+    // Create new recipe object.
+    state.recipe = new Recipe(id);
+
+    // Get recipe data.
+    await state.recipe.getRecipe();
+
+    // Calculate servings and time.
+    state.recipe.calcServings();
+    state.recipe.calcTime();
+
+    // Render the recipe.
+    console.log(state.recipe)
+  }
+};
+
+window.addEventListener('hashchange', controlRecipe)
