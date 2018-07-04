@@ -7,7 +7,6 @@ export default class Recipe {
   }
 
   async getRecipe() {
-    console.log(this);
     try {
       const result = await axios(`${proxy}http://food2fork.com/api/get?key=${key}&rId=${this.id}`);
 
