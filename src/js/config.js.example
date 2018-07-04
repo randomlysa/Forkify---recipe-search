@@ -1,0 +1,2 @@
+export const food2forkAPIKey = 'YOUR_KEY_HERE';
+export const proxy = 'https://cors-anywhere.herokuapp.com/';
