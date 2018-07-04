@@ -13,6 +13,7 @@ import { elements, renderLoader, removeLoader } from './views/base';
 */
 const state = {};
 
+// Search Controller
 const controlSearch = async () => {
   // Get the query from the view.
   const query = searchView.getInput();
