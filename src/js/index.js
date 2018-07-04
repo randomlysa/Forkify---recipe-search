@@ -67,15 +67,20 @@ const controlRecipe = async () => {
     // Create new recipe object.
     state.recipe = new Recipe(id);
 
-    // Get recipe data.
-    await state.recipe.getRecipe();
+    try {
+      // Get recipe data.
+      await state.recipe.getRecipe();
 
-    // Calculate servings and time.
-    state.recipe.calcServings();
-    state.recipe.calcTime();
+      // Calculate servings and time.
+      state.recipe.calcServings();
+      state.recipe.calcTime();
 
-    // Render the recipe.
-    console.log(state.recipe)
+      // Render the recipe.
+      console.log(state.recipe)
+    } catch (error) {
+      console.log(error);
+      alert('Error loading recipe.');
+    }
   }
 };
 
