@@ -1,5 +1,9 @@
 import { elements } from './base';
 
+export const removeRecipe = () => {
+  elements.recipe.innerHTML = '';
+}
+
 const createIngredientMarkup = ingredient => `
   <li class="recipe__item">
     <svg class="recipe__icon">
