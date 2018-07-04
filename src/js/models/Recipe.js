@@ -50,7 +50,7 @@ export default class Recipe {
       });
 
       // Remove parenthesis.
-    ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+      ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
 
       // Parse ingredients into count, unit, and ingredient.
       const arrIng = ingredient.split(' ');
@@ -73,24 +73,22 @@ export default class Recipe {
           count,
           unit: arrIng[unitIndex],
           ingredient: arrIng.slice(unitIndex + 1).join(' ')
-        }
-
+        };
       } else if (parseInt(arrIng[0], 10)) {
         // There is no unit but first element is a number.
         objectIngredient = {
           count: parseInt(arrIng[0], 10),
           unit: '',
           ingredient: arrIng.slice(1).join(' ')
-        }
+        };
       } else if (unitIndex === -1) {
         // There is no unit.
         objectIngredient = {
           count: 1,
           unit: '',
           ingredient
-        }
+        };
       }
-
       return objectIngredient;
     }); // this.ingredients.map
 
