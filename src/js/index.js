@@ -1,5 +1,7 @@
 // Global app controller
 import Search from './models/Search';
+import Recipe from './models/Recipe';
+
 import * as searchView from './views/searchView';
 import { elements, renderLoader, removeLoader } from './views/base';
 
@@ -51,3 +53,9 @@ elements.searchResultsPages.addEventListener('click', e => {
     searchView.renderResults(state.search.result, goToPage);
   }
 })
+
+
+// Recipe controller.
+const r = new Recipe('47923');
+r.getRecipe();
+console.log(r)
