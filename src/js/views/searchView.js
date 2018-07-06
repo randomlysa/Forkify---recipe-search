@@ -16,6 +16,19 @@ export const clearResults = () => {
   elements.searchResultsPages.innerHTML = '';
 };
 
+// Highlight the current recipe in the recipe list.
+export const highlightSelected = id => {
+  // Select all recipe links.
+  const allLinks = Array.from(document.querySelectorAll(`.results__link`));
+  // Remove active class from all.
+  allLinks.forEach(link => {
+    link.classList.remove('results__link--active');
+  });
+  // Add active class to link that has a href that equals the current id.
+  document.querySelector(`a[href='#${id}']`).classList.add('results__link--active');
+
+}
+
 // Keep title from overflowing to the next line, but also don't
 // use partial words - only words that fit fully.
 const shortenRecipeTitle = (title, limit = 17) => {
