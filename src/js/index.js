@@ -152,7 +152,3 @@ elements.recipe.addEventListener('click', e => {
     controlList();
   }
 });
-
-// Test in the console.
-window.l = new List();
-
