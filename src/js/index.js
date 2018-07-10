@@ -182,6 +182,7 @@ elements.recipe.addEventListener('click', e => {
     state.recipe.updateServings('inc');
     recipeView.updateServingsIngredients(state.recipe);
   } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
+    // Add ingredients to shopping list.
     controlList();
   } else if (e.target.matches('.recipe__love, .recipe__love *')) {
     // Like controller.
