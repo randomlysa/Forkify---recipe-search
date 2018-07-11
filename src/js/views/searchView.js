@@ -25,7 +25,7 @@ export const highlightSelected = id => {
     link.classList.remove('results__link--active');
   });
   // Add active class to link that has a href that equals the current id.
-  document.querySelector(`a[href='#${id}']`).classList.add('results__link--active');
+  document.querySelector(`.results__link[href='#${id}']`).classList.add('results__link--active');
 
 }
 
