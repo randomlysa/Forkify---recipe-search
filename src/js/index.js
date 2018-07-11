@@ -7,6 +7,7 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import { elements, renderLoader, removeLoader } from './views/base';
 
 /** Global state of the app
@@ -91,7 +92,10 @@ const controlRecipe = async () => {
 
       // Render the recipe.
       removeLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(
+        state.recipe,
+        state.likes.isLiked(id)
+      );
 
     } catch (error) {
       console.log(error);
@@ -138,6 +142,9 @@ elements.shopping.addEventListener('click', e => {
 });
 
 // Like Controller
+// TESTING. Until localstorage is implemented.
+state.likes = new Likes();
+
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
   const currentId = state.recipe.id;
@@ -153,6 +160,8 @@ const controlLike = () => {
     );
 
     // Toggle the like button.
+    likesView.toggleLikeButton(true);
+
 
     // Add like to the UI list.
     console.log(state.likes);
@@ -163,6 +172,7 @@ const controlLike = () => {
     state.likes.deleteLike(currentId);
 
     // Toggle the like button.
+    likesView.toggleLikeButton(false);
 
     // Remove like from the UI list.
     console.log(state.likes);
