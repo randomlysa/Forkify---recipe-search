@@ -142,11 +142,6 @@ elements.shopping.addEventListener('click', e => {
 });
 
 // Like Controller
-// TESTING. Until localstorage is implemented.
-state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumberOfLikes());
-// END TESTING.
-
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
   const currentId = state.recipe.id;
@@ -181,6 +176,17 @@ const controlLike = () => {
 
   likesView.toggleLikeMenu(state.likes.getNumberOfLikes());
 }
+
+// Read and render likes from localStorage.
+window.addEventListener('load', () => {
+  state.likes = new Likes();
+  state.likes.readDataFromLocalStorage();
+
+  // Toggle the button.
+  likesView.toggleLikeMenu(state.likes.getNumberOfLikes());
+  // Add items to likes list.
+  state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 // Handling recipe button clicks.
 elements.recipe.addEventListener('click', e => {
