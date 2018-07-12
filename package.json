@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "fractional": "^1.0.0",
+    "num2fraction": "^1.2.2",
     "uniqid": "^5.0.3"
   },
   "devDependencies": {

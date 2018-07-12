@@ -1,5 +1,5 @@
 import { elements } from './base';
-import { Fraction } from 'fractional';
+import num2fraction from 'num2fraction';
 
 export const removeRecipe = () => {
   elements.recipe.innerHTML = '';
@@ -10,17 +10,18 @@ const formatCount = count => {
 
     const [ int, dec ] = count.toString().split('.').map(number => parseInt(number, 10));
 
-    // Example: 1 -- 1
+    // Example: 1 --> 1
     if (!dec) return count;
 
-    // Example: 0.5 -- 1/2
+    // Example: 0.5 --> 1/2
     if (int === 0) {
-      const fr = new Fraction(count);
-      return `${fr.numerator}/${fr.denominator}`;
+      return num2fraction(count);
+
+    // Example: 2.5 --> 2 1/2
     } else {
-      // Example: 2.5 -- 2 1/2
-      const fr = new Fraction(count - int);
-      return `${int} ${fr.numerator}/${fr.denominator}`;
+      // Get the decimal. Example: 2.5 --> 0.5.
+      const fr = num2fraction(count - int);
+      return `${int} ${fr}`;
     }
   } // if count
 
