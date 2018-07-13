@@ -21,6 +21,10 @@ const formatCount = count => {
     } else {
       // Get the decimal. Example: 2.5 --> 0.5.
       const fr = num2fraction(count - int);
+      const [num, denom] = fr.split('/');
+      // If numerator === denominator (example: 1/1), return int + num/denom.
+      if (num === denom) return int + (num/denom);
+      // Otherwise return a fraction.
       return `${int} ${fr}`;
     }
   } // if count
