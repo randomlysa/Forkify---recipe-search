@@ -7,7 +7,8 @@ export const elements = {
   recipe: document.querySelector('.recipe'),
   shopping: document.querySelector('.shopping__list'),
   likesMenu: document.querySelector('.likes__field'),
-  likesList: document.querySelector('.likes__list')
+  likesList: document.querySelector('.likes__list'),
+  errorText: document.querySelector('.notifications__text')
 };
 
 export const elementStrings = {

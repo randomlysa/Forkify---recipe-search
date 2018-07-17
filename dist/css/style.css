@@ -228,6 +228,11 @@ body {
   grid-area: notifications;
   height: 12pt; }
 
+  .notifications__text {
+    text-align: center;
+    font-size: 14pt;
+  }
+
 .results,
 .likes {
   padding: 3rem 0; }

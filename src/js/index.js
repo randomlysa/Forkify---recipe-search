@@ -99,7 +99,7 @@ const controlRecipe = async () => {
 
     } catch (error) {
       console.log(error);
-      alert('Error loading recipe.');
+      elements.errorText.insertAdjacentHTML('afterbegin', 'There was an error loading the recipe.')
     }
   }
 };
