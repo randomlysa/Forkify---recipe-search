@@ -226,7 +226,8 @@ body {
 
 .notifications {
   grid-area: notifications;
-  height: 12pt; }
+  height: 12pt;
+  display: none; }
 
   .notifications__text {
     text-align: center;

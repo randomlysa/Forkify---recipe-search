@@ -82,6 +82,9 @@ const controlRecipe = async () => {
     state.recipe = new Recipe(id);
 
     try {
+      // Hide notification if it exists.
+      elements.notifications.style.display = 'none';
+
       // Get recipe data and parse ingredients.
       await state.recipe.getRecipe();
       state.recipe.parseIngredients();
@@ -99,6 +102,7 @@ const controlRecipe = async () => {
 
     } catch (error) {
       console.log(error);
+      elements.notifications.style.display = 'inline';
       elements.notificationsText.insertAdjacentHTML('afterbegin', 'There was an error loading the recipe.')
     }
   }
