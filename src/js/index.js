@@ -8,7 +8,7 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likesView from './views/likesView';
-import { elements, renderLoader, removeLoader } from './views/base';
+import * as base from './views/base';
 
 /** Global state of the app
  * - Search object
@@ -24,13 +24,17 @@ const controlSearch = async () => {
   const query = searchView.getInput();
 
   if (query) {
+    // Hide previous notification message.
+    // TODO: Keep here or only hide on success?
+    base.hideNotificationMessage();
+
     // Create a new search object and add it to state.
     state.search = new Search(query);
 
     // Prepare the UI for results.
     searchView.clearInput();
     searchView.clearResults();
-    renderLoader(elements.searchResultsDiv);
+    base.renderLoader(base.elements.searchResultsDiv);
 
     try {
       // Search for recipes.
@@ -38,21 +42,21 @@ const controlSearch = async () => {
 
       // Render results on the UI.
       // console.log(state.search.result);
-      removeLoader();
+      base.removeLoader();
       searchView.renderResults(state.search.result);
     } catch (error) {
-      removeLoader();
-      alert('Error searching');
+      base.removeLoader();
+      base.showNotificationMessage('There was an error searching.');
     }
   } //
 }
 
-elements.searchForm.addEventListener('submit', e => {
+base.elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
 });
 
-elements.searchResultsPages.addEventListener('click', e => {
+base.elements.searchResultsPages.addEventListener('click', e => {
   // Find the button that was clicked.
   const button = e.target.closest('.btn-inline');
   if (button) {
@@ -74,7 +78,7 @@ const controlRecipe = async () => {
   if (id) {
     // Prepare the UI for changes.
     recipeView.removeRecipe();
-    renderLoader(elements.recipe);
+    base.renderLoader(base.elements.recipe);
 
     if (state.search) searchView.highlightSelected(id)
 
@@ -83,7 +87,7 @@ const controlRecipe = async () => {
 
     try {
       // Hide notification if it exists.
-      elements.notifications.style.display = 'none';
+      base.hideNotificationMessage();
 
       // Get recipe data and parse ingredients.
       await state.recipe.getRecipe();
@@ -94,7 +98,7 @@ const controlRecipe = async () => {
       state.recipe.calcTime();
 
       // Render the recipe.
-      removeLoader();
+      base.removeLoader();
       recipeView.renderRecipe(
         state.recipe,
         state.likes.isLiked(id)
@@ -102,8 +106,7 @@ const controlRecipe = async () => {
 
     } catch (error) {
       console.log(error);
-      elements.notifications.style.display = 'inline';
-      elements.notificationsText.insertAdjacentHTML('afterbegin', 'There was an error loading the recipe.')
+      base.showNotificationMessage('There was an error loading the recipe.');
     }
   }
 };
@@ -127,7 +130,7 @@ const controlList = () => {
 }
 
 // Handle delete and update list item events.
-elements.shopping.addEventListener('click', e => {
+base.elements.shopping.addEventListener('click', e => {
   const id = e.target.closest('.shopping__item').dataset.itemid;
 
   // Handle delete button.
@@ -193,7 +196,7 @@ window.addEventListener('load', () => {
 });
 
 // Handling recipe button clicks.
-elements.recipe.addEventListener('click', e => {
+base.elements.recipe.addEventListener('click', e => {
   if (e.target.matches('.btn-decrease, .btn-decrease *')) {
     // Decrease button is clicked.
     if (state.recipe.servings > 1) {
