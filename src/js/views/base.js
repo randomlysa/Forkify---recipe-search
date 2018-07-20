@@ -31,3 +31,12 @@ export const removeLoader = () => {
   const loader = document.querySelector(`.${elementStrings.loader}`);
   if (loader) loader.parentElement.removeChild(loader);
 };
+
+export const showNotificationMessage = message => {
+  elements.notifications.style.display = 'inline';
+  elements.notificationsText.insertAdjacentHTML('afterbegin', message);
+};
+
+export const hideNotificationMessage = () => {
+  elements.notifications.style.display = 'none';
+};
