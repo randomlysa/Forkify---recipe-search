@@ -66,6 +66,12 @@ const renderRecipe = recipe => {
   elements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
 
+const renderError = () => {
+  const markup = `<li><h4 class="results__noresults">No results found, sorry!</h4></li>`;
+
+  elements.searchResultList.insertAdjacentHTML('beforeend', markup);
+};
+
 const createButton = (currentPage, buttonType) => `
   <button
     class="btn-inline results__btn--${buttonType}"
@@ -113,9 +119,14 @@ export const renderResults = (recipes, page = 1, resultsPerPage = 10) => {
   const start = (page - 1) * resultsPerPage;
   const end = page * resultsPerPage;
 
-  // Render (partial) list of recipies.
-  recipes.slice(start, end).forEach(renderRecipe);
+  // No recipes found.
+  if (recipes.length === 0) {
+    renderError();
+  } else {
+    // Render (partial) list of recipies.
+    recipes.slice(start, end).forEach(renderRecipe);
 
-  // Render buttons.
-  renderButtons(page, recipes.length, resultsPerPage);
+    // Render buttons.
+    renderButtons(page, recipes.length, resultsPerPage);
+  }
 };

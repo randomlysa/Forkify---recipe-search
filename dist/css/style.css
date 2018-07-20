@@ -312,6 +312,14 @@ body {
   .results__btn--next,
   .likes__btn--next {
     float: right; }
+  .results__noresults {
+    font-size: 1.3rem;
+    color: #F59A83;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: .3rem;
+    text-align: center;
+  }
 
 .recipe {
   background-color: #F9F5F3;
