@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { food2forkAPIKey as key, proxy } from '../../../src/js/config';
+import { showNotificationMessage } from '../views/base.js';
 
 export default class Recipe {
   constructor(id) {
@@ -19,7 +20,7 @@ export default class Recipe {
 
     } catch (error) {
       console.log(error);
-      alert("Something went wrong...");
+      showNotificationMessage('There was an error loading the recipe.');
     }
   } // getRecipe
 

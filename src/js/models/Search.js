@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { food2forkAPIKey as key, proxy } from '../../../src/js/config';
+import { showNotificationMessage } from '../views/base.js';
 
 export default class Search {
   // Constructor method. Called immediately.
@@ -15,7 +16,7 @@ export default class Search {
       this.result = result.data.recipes;
       // console.log(this.result);
     } catch (e) {
-      alert(e);
+      showNotificationMessage('There was an error searching.');
     } // catch
   } // async getResults
 } // default class Search
