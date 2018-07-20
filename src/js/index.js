@@ -167,7 +167,8 @@ const controlLike = () => {
     likesView.toggleLikeButton(true);
 
     // Add like to the UI list.
-    likesView.renderLike(state.recipe);
+    // TODO does this matter if it is newLike or state.recipe?
+    likesView.renderLike(newLike);
 
   // User has liked current recipe.
   } else {
