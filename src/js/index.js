@@ -43,13 +43,40 @@ const controlSearch = async () => {
       // Render results on the UI.
       // console.log(state.search.result);
       base.removeLoader();
+      saveSearchToLocalStorage();
       searchView.renderResults(state.search.result);
-    } catch (error) {
+    } catch (e) {
+      console.log(e);
       base.removeLoader();
       base.showNotificationMessage('There was an error searching.');
     }
   } //
 }
+
+const controlSearchFromState = () => {
+  const query = state.search;
+
+  if (query) {
+    // Hide previous notification message.
+    // TODO: Keep here or only hide on success?
+    base.hideNotificationMessage();
+
+    // Prepare the UI for results.
+    searchView.clearInput();
+    searchView.clearResults();
+    base.renderLoader(base.elements.searchResultsDiv);
+
+    try {
+      // Render results on the UI.
+      base.removeLoader();
+      searchView.renderResults(state.search.result);
+    } catch (e) {
+      console.log(e);
+      base.removeLoader();
+      base.showNotificationMessage('There was an error searching.');
+    } // try/catch
+  } // if query
+} // controlSearchFromState
 
 base.elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -216,3 +243,23 @@ base.elements.recipe.addEventListener('click', e => {
     controlLike();
   }
 });
+
+// Save search object to storage (search query and results.)
+const saveSearchToLocalStorage = () => {
+  console.log('saving state', state);
+  localStorage.setItem('recipe-search', JSON.stringify(state.search));
+} // saveSearchToLocalStorage
+
+// Read search from storage and update UI if items exist in storage.
+const readSearchFromLocalStorage = () => {
+  const storage = JSON.parse(localStorage.getItem('recipe-search'));
+
+  // Restore search if storage exists.
+  if (storage) {
+    state.search = storage;
+    controlSearchFromState();
+  }
+} // readSearchFromLocalStorage
+
+// Read/load state.search from storage on page load.
+window.addEventListener('load', readSearchFromLocalStorage);

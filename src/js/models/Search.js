@@ -16,6 +16,7 @@ export default class Search {
       this.result = result.data.recipes;
       // console.log(this.result);
     } catch (e) {
+      console.log(e);
       showNotificationMessage('There was an error searching.');
     } // catch
   } // async getResults
