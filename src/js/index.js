@@ -120,6 +120,12 @@ const controlRecipe = async () => {
       await state.recipe.getRecipe();
       state.recipe.parseIngredients();
 
+      // Check if ingredients exist. If not, don't try to render the recipe.
+      if (!state.recipe.ingredients) {
+        throw 'No ingredients found - incorrect recipe ID or error parsing \
+          ingredients?';
+      }
+
       // Calculate servings and time.
       state.recipe.calcServings();
       state.recipe.calcTime();

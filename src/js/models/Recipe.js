@@ -25,6 +25,9 @@ export default class Recipe {
   } // getRecipe
 
   calcTime() {
+
+    // Check for ingredients.
+    if (!this.ingredients) return;
     // Assuming 15 minutes per 3 ingredients.
     const numberOFIngredients = this.ingredients.length;
     const periods = Math.ceil(numberOFIngredients / 3);
@@ -47,6 +50,9 @@ export default class Recipe {
     const numbersInWords = ['one', 'two', 'three', 'four', 'five', 'six',
       'seven', 'eight', 'nine', 'ten'];
     const numbersInInt = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // Check for ingredients.
+    if (!this.ingredients) return;
 
     const newIngredients = this.ingredients.map(item => {
 
