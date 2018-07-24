@@ -34,11 +34,9 @@ export const removeLoader = () => {
 
 export const showNotificationMessage = message => {
   elements.notificationsText.innerHTML= '';
-  elements.notifications.style.display = 'inline';
   elements.notificationsText.insertAdjacentHTML('afterbegin', message);
 };
 
 export const hideNotificationMessage = () => {
-  elements.notifications.style.display = 'none';
   elements.notificationsText.innerHTML= '';
 };

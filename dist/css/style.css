@@ -34,9 +34,9 @@ body {
   display: grid;
   grid-template-rows: 10rem 5rem minmax(100rem, auto);
   grid-template-columns: 1.1fr 2fr 1.1fr;
-  grid-template-areas: "head head head"
-                       "notifications notifications notifications"
-                       "list recipe shopping"; }
+  grid-template-areas:
+                      "head head head"
+                      "list recipe shopping"; }
   @media only screen and (max-width: 68.75em) {
     .container {
       width: 100%;
@@ -225,9 +225,11 @@ body {
     transition: all .5s .2s; }
 
 .notifications {
-  grid-area: notifications;
-  height: 12pt;
-  display: none; }
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #F48982;}
 
   .notifications__text {
     text-align: center;
