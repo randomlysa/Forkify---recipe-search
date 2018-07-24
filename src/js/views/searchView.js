@@ -25,7 +25,9 @@ export const highlightSelected = id => {
     link.classList.remove('results__link--active');
   });
   // Add active class to link that has a href that equals the current id.
-  document.querySelector(`.results__link[href='#${id}']`).classList.add('results__link--active');
+  const currentLink = document.querySelector(`.results__link[href='#${id}']`);
+  // currentLink doesn't exist if the recipe id doesn't exist.
+  if (currentLink) currentLink.classList.add('results__link--active');
 
 }
 
