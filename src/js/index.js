@@ -124,7 +124,7 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
       state.recipe.calcTime();
 
-      // Render the recipe.
+      // Remove loader and render recipe.
       base.removeLoader();
       recipeView.renderRecipe(
         state.recipe,
