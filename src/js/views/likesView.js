@@ -8,8 +8,8 @@ export const toggleLikeButton = isLiked => {
 export const toggleLikeMenu = numLikes => {
   // Toggle the 'heart' that shows the likes menu when hovered over.
   elements.likesMenu.style.visibility = numLikes > 0 ? 'visible' : 'hidden';
-  // Toggle the link to remove all liked recipes.
-  elements.likesRemoveAll.style.visibility = numLikes > 1 ? 'visible' : 'hidden';
+  // Toggle displaying the link to remove all liked recipes.
+  elements.likesRemoveAll.style.display = numLikes > 1 ? 'block' : 'none';
 };
 
 elements.likesRemoveAll.addEventListener('click', () => {
