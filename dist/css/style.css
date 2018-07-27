@@ -211,6 +211,14 @@ body {
     fill: #F59A83;
     height: 3.75rem;
     width: 3.75rem; }
+  .likes__removeall {
+    padding: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer; }
+  .likes__removeall:hover {
+    background-color: #F48982;
+  }
   .likes__panel {
     position: absolute;
     right: 0;
