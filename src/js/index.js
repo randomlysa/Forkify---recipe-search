@@ -192,7 +192,7 @@ const controlLike = () => {
     const newLike = state.likes.addLike(
       currentId,
       state.recipe.title,
-      state.recipe.recipe,
+      state.recipe.author,
       state.recipe.img
     );
 
