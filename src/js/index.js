@@ -229,6 +229,22 @@ window.addEventListener('load', () => {
   state.likes.likes.forEach(like => likesView.renderLike(like));
 });
 
+// Delete all likes.
+// TODO: this doesn't remove the 'heart' that opens the menu or toggle the
+// 'heart' in the individual (open) recipe.
+base.elements.likesRemoveAll.addEventListener('click', () => {
+  const allLikes = document.querySelectorAll(".likes__link");
+  Array.from(allLikes).forEach(like => {
+    if (like.href.includes('#')) {
+      state.likes.deleteLike(like.href.split('#')[1]);
+      likesView.deleteLike(like.href.split('#')[1]);
+    } else {
+      console.log('Error - hash not found in url', like);
+    }
+  }); // Array.from
+});
+
+
 // Handling recipe button clicks.
 base.elements.recipe.addEventListener('click', e => {
   if (e.target.matches('.btn-decrease, .btn-decrease *')) {

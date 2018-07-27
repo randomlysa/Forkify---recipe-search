@@ -12,17 +12,6 @@ export const toggleLikeMenu = numLikes => {
   elements.likesRemoveAll.style.display = numLikes > 1 ? 'block' : 'none';
 };
 
-elements.likesRemoveAll.addEventListener('click', () => {
-  const allLikes = document.querySelectorAll(".likes__link");
-  Array.from(allLikes).forEach(like => {
-    if (like.href.includes('#')) {
-      deleteLike(like.href.split('#')[1]);
-    } else {
-      console.log('Error - hash not found in url', like);
-    }
-  }); // Array.fron
-});
-
 export const renderLike = like => {
   const markup = `
     <li>
