@@ -37,11 +37,20 @@ body {
   grid-template-areas:
                       "head head head"
                       "list recipe shopping"; }
-  @media only screen and (max-width: 68.75em) {
+
+  @media only screen and (max-width: 800px) {
     .container {
       width: 100%;
       margin: 0;
-      border-radius: 0; } }
+      border-radius: 0;
+
+      grid-template-rows: 10rem 40rem 110rem minmax(20rem, auto);
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "head"
+        "list"
+        "recipe"
+        "shopping"; } }
 
 .btn, .btn-small, .btn-small:link, .btn-small:visited {
   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
@@ -331,6 +340,12 @@ body {
     text-align: center;
   }
 
+  @media only screen and (max-width: 68.75em) {
+      .results {
+        max-height: 40rem;
+        overflow: auto;
+      }}
+
 .recipe {
   background-color: #F9F5F3;
   border-top: 1px solid #fff; }
@@ -473,7 +488,7 @@ body {
   .shopping__list {
     list-style: none;
     max-height: 77rem;
-    overflow: scroll; }
+    overflow: auto; }
   .shopping__item {
     display: flex;
     align-items: flex-start;
