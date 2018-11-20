@@ -32,10 +32,11 @@ body {
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
-  grid-template-rows: 10rem minmax(100rem, auto);
+  grid-template-rows: 10rem 0rem minmax(100rem, auto);
   grid-template-columns: 1.1fr 2fr 1.1fr;
   grid-template-areas:
                       "head head head"
+                      "menu menu menu"
                       "list recipe shopping"; }
 
   @media only screen and (max-width: 800px) {
@@ -44,13 +45,26 @@ body {
       margin: 0;
       border-radius: 0;
 
-      grid-template-rows: 10rem 40rem 110rem minmax(20rem, auto);
+      grid-template-rows: 10rem 10rem minmax(20rem, auto);
       grid-template-columns: 1fr;
       grid-template-areas:
         "head"
+        "menu"
         "list"
         "recipe"
         "shopping"; } }
+
+.menu {
+  display: flex;
+  font-size: 3rem;
+  grid-area: menu;
+  padding-left: 2rem; }
+  .menu h2 {
+    cursor: pointer; }
+  .menu h2:hover {
+    cursor: pointer;
+    text-decoration: underline; }
+
 
 .btn, .btn-small, .btn-small:link, .btn-small:visited {
   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
@@ -534,3 +548,8 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+
+.collapsed {
+  display: none;
+  height: 0;
+}

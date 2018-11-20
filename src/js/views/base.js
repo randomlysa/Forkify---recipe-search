@@ -5,12 +5,17 @@ export const elements = {
   searchResultList: document.querySelector('.results__list'),
   searchResultsPages: document.querySelector('.results__pages'),
   recipe: document.querySelector('.recipe'),
+  shoppingDiv: document.querySelector('.shopping'),
   shopping: document.querySelector('.shopping__list'),
   likesMenu: document.querySelector('.likes__field'),
   likesList: document.querySelector('.likes__list'),
   likesRemoveAll: document.querySelector('.likes__removeall'),
   notifications: document.querySelector('.notifications'),
-  notificationsText: document.querySelector('.notifications__text')
+  notificationsText: document.querySelector('.notifications__text'),
+  showResults: document.querySelector('.menu__results'),
+  showRecipe: document.querySelector('.menu__recipe'),
+  showCart: document.querySelector('.menu__cart'),
+  menu: document.querySelector('.menu')
 };
 
 export const elementStrings = {

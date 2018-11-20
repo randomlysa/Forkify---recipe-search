@@ -10,6 +10,8 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import * as base from './views/base';
 
+import * as h from  './utils/cssClassHelpers';
+
 /** Global state of the app
  * - Search object
  * - Current recipe object
@@ -136,6 +138,9 @@ const controlRecipe = async () => {
         state.recipe,
         state.likes.isLiked(id)
       );
+
+      // Setup options based on width < || > 800 px.
+      h.setupInitialPage();
 
     } catch (error) {
       console.log(error);
