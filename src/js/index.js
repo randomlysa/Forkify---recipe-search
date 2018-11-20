@@ -144,7 +144,6 @@ const controlRecipe = async () => {
   }
 };
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 // List Controller
 const controlList = () => {
@@ -219,7 +218,7 @@ const controlLike = () => {
 }
 
 // Read and render likes from localStorage.
-window.addEventListener('load', () => {
+const getLikesFromLocalStorage = () => {
   state.likes = new Likes();
   state.likes.readDataFromLocalStorage();
 
@@ -227,7 +226,7 @@ window.addEventListener('load', () => {
   likesView.toggleLikeMenu(state.likes.getNumberOfLikes());
   // Add items to likes list.
   state.likes.likes.forEach(like => likesView.renderLike(like));
-});
+};
 
 // Delete all likes.
 // TODO: this doesn't remove the 'heart' that opens the menu or toggle the
@@ -283,5 +282,10 @@ const readSearchFromLocalStorage = () => {
   }
 } // readSearchFromLocalStorage
 
-// Read/load state.search from storage on page load.
+// init functions below.
+// Search: Read/load state.search from storage on page load.
 window.addEventListener('load', readSearchFromLocalStorage);
+// Likes: Load likes from storage.
+window.addEventListener('load', getLikesFromLocalStorage);
+// Recipe: Load recipe on hashchange and pageload.
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
