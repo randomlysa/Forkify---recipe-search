@@ -41,7 +41,6 @@ const controlSearch = async () => {
       await state.search.getResults();
 
       // Render results on the UI.
-      // console.log(state.search.result);
       base.removeLoader();
       saveSearchToLocalStorage();
       searchView.renderResults(state.search.result);
@@ -102,6 +101,7 @@ const controlRecipe = async () => {
   // Get ID from url hash.
   const id = window.location.hash.replace('#', '');
 
+  // An id was found, load the recipe.
   if (id) {
     // Prepare the UI for changes.
     recipeView.removeRecipe();
@@ -130,7 +130,7 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
       state.recipe.calcTime();
 
-      // Remove loader and render recipe.
+      // Remove loader image and render the recipe.
       base.removeLoader();
       recipeView.renderRecipe(
         state.recipe,
