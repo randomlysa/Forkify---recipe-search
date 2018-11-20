@@ -26,6 +26,7 @@ body {
 
 .container {
   max-width: 120rem;
+  min-width: 76rem;
   margin: 4vw auto;
   background-color: #fff;
   border-radius: 6px;
@@ -33,7 +34,7 @@ body {
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
 
-  grid-template-rows: 10rem 10rem 120rem;
+  grid-template-rows: 10rem 10rem 140rem;
   grid-template-columns: 100%;
   grid-template-areas:
     "head"
@@ -482,7 +483,7 @@ body {
   flex-direction: column; }
   .shopping__list {
     list-style: none;
-    max-height: 77rem;
+    max-height: 90%;
     overflow: auto; }
   .shopping__item {
     display: flex;
