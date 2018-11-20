@@ -34,7 +34,7 @@ body {
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
 
-  grid-template-rows: 10rem 10rem 140rem;
+  grid-template-rows: 12rem 10rem 140rem;
   grid-template-columns: 100%;
   grid-template-areas:
     "head"
@@ -47,7 +47,7 @@ body {
   display: flex;
   font-size: 3rem;
   grid-area: menu;
-  padding-left: 2rem; }
+  padding: none; }
   .menu h2 {
     cursor: pointer; }
   .menu h2:hover {
@@ -551,18 +551,17 @@ https://freefrontend.com/css-breadcrumbs/
 https://codepen.io/iamglynnsmith/pen/BRGjgW
 */
 
-.container__breadcrumbs {
+.breadcrumb__container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   min-width: 480px;
-  padding: 0 40px;
+  padding: 0px;
 }
 
 .breadcrumb {
   display: flex;
-  border-radius: 6px;
   overflow: hidden;
   margin: auto;
   text-align: center;
@@ -571,9 +570,8 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW
   height: 57px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  box-shadow: 0 1px 1px black, 0 4px 14px rgba(0, 0, 0, 0.7);
   z-index: 1;
-  background-color: #ddd;
+  background-color: #fff;
   font-size: 14px;
 }
 
@@ -606,11 +604,10 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW
   height: 57px;
   top: 0;
   right: -28.1481481481px;
-  background-color: #ddd;
+  background-color: #fff;
   border-top-right-radius: 5px;
   -webkit-transform: scale(0.707) rotate(45deg);
           transform: scale(0.707) rotate(45deg);
-  box-shadow: 1px -1px rgba(0, 0, 0, 0.25);
   z-index: 1;
 }
 
@@ -630,12 +627,12 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW
 }
 
 .breadcrumb a.active, .breadcrumb a:hover {
-  background: #996300;
+  background: #FBDB89;
   color: white;
 }
 
 .breadcrumb a.active:after, .breadcrumb a:hover:after {
-  background: #996300;
+  background: #FBDB89;
   color: white;
 }
 
