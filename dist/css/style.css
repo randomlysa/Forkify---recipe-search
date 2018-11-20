@@ -636,6 +636,10 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW
   color: white;
 }
 
+.breadcrumb--active {
+  border-bottom: solid 4px #f7b915;
+}
+
 @media all and (max-width: 1000px) {
   .breadcrumb {
     font-size: 12px;

@@ -302,17 +302,31 @@ const  setupSwiper = () => {
     centeredSlides: true,
   });
 
-  const goTo1 = () => mySwiper.slideTo(0);;
-  const goTo2 = () => mySwiper.slideTo(1);;
-  const goTo3 = () => mySwiper.slideTo(2);;
+  const goTo = (slide) => {
+    state.currentSlide = slide;
+    mySwiper.slideTo(slide);
 
-  base.elements.showResults.addEventListener('click', goTo1);
-  base.elements.showRecipe.addEventListener('click', goTo2);
-  base.elements.showCart.addEventListener('click', goTo3);
+
+    // Select all recipe links.
+    const allMenuLinks = Array.from(document.querySelectorAll(`.breadcrumb__title`));
+
+    // Remove active class from all.
+    allMenuLinks.forEach(link => link.classList.remove('breadcrumb--active'));
+
+    // Add active class to link that has a data-menu = state.currentSlide.
+    const currentLink = document.querySelector(
+      `.breadcrumb__title[data-menu='${state.currentSlide}']`
+    );
+    // currentLink doesn't exist if the recipe id doesn't exist.
+    if (currentLink) currentLink.classList.add('breadcrumb--active');
+  } // const goTo = (slide) =>
+
+  base.elements.showResults.addEventListener('click', () => goTo(0));
+  base.elements.showRecipe.addEventListener('click', () => goTo(1));
+  base.elements.showCart.addEventListener('click', () => goTo(2));
 
   // Add swiper to state.
   state.swiper = document.querySelector('.swiper-container').swiper
-
 };
 
 // init functions below.
@@ -324,4 +338,3 @@ window.addEventListener('load', readSearchFromLocalStorage);
 window.addEventListener('load', getLikesFromLocalStorage);
 // Recipe: Load recipe on hashchange and pageload.
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
-
