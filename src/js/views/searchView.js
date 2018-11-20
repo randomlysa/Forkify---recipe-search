@@ -31,25 +31,6 @@ export const highlightSelected = id => {
 
 }
 
-// Keep title from overflowing to the next line, but also don't
-// use partial words - only words that fit fully.
-const shortenRecipeTitle = (title, limit = 17) => {
-  const newTitle = [];
-
-  if (title.length > limit) {
-    title.split(' ').reduce((acc, current) => {
-      if (acc + current.length <= limit) {
-        newTitle.push(current);
-      }
-      return acc + current.length;
-    }, 0);
-
-    // Return the result.
-    return `${newTitle.join(' ')} ...`;
-  };
-  return title;
-};
-
 const renderRecipe = recipe => {
   const markup = `
     <li>
@@ -58,7 +39,7 @@ const renderRecipe = recipe => {
               <img src="${recipe.image_url}" alt="${recipe.title}">
           </figure>
           <div class="results__data">
-              <h4 class="results__name">${shortenRecipeTitle(recipe.title)}</h4>
+              <h4 class="results__name">${recipe.title}</h4>
               <p class="results__author">${recipe.publisher}</p>
           </div>
       </a>
