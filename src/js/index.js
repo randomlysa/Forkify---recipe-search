@@ -107,8 +107,9 @@ const controlRecipe = async () => {
   // An id was found, load the recipe.
   if (id) {
 
-    // Switch to recipe slide.
-    state.swiper.slideTo(1)
+    // Switch to recipe slide. Use goTo because it marks 'Recipe' as the
+    // active item in the menu.
+    state.goTo(1)
 
     // Prepare the UI for changes.
     recipeView.removeRecipe();
@@ -295,17 +296,25 @@ base.elements.searchResultList.addEventListener('click', (e) => {
   console.log(recipeId)
 });
 
-const  setupSwiper = () => {
+const setupSwiper = () => {
+  // Check for an id.
+  let initialSlide;
+  const id = window.location.hash.replace('#', '');
+
+  // Set initial slide.
+  if (id) initialSlide = 1
+  else initialSlide = 0
+
   // Initialize swiper on page load.
   const mySwiper = new Swiper ('.swiper-container', {
     direction: 'horizontal',
     centeredSlides: true,
+    initialSlide: initialSlide
   });
 
   const goTo = (slide) => {
     state.currentSlide = slide;
     mySwiper.slideTo(slide);
-
 
     // Select all recipe links.
     const allMenuLinks = Array.from(document.querySelectorAll(`.breadcrumb__title`));
@@ -321,12 +330,18 @@ const  setupSwiper = () => {
     if (currentLink) currentLink.classList.add('breadcrumb--active');
   } // const goTo = (slide) =>
 
+  // Set up click handling on menu.
   base.elements.showResults.addEventListener('click', () => goTo(0));
   base.elements.showRecipe.addEventListener('click', () => goTo(1));
   base.elements.showCart.addEventListener('click', () => goTo(2));
 
+  // Use goTo to mark item in menu. The page should have already loaded on this
+  // slide.
+  if (id) goTo(1)
+  else goTo(0)
+
   // Add swiper to state.
-  state.swiper = document.querySelector('.swiper-container').swiper
+  state.goTo = goTo;
 };
 
 // init functions below.
