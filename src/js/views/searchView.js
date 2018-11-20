@@ -53,7 +53,7 @@ const shortenRecipeTitle = (title, limit = 17) => {
 const renderRecipe = recipe => {
   const markup = `
     <li>
-      <a class="results__link" data-rid="${recipe.recipe_id}" href="#">
+      <a class="results__link" data-rid="${recipe.recipe_id}" href="#${recipe.recipe_id}">
           <figure class="results__fig">
               <img src="${recipe.image_url}" alt="${recipe.title}">
           </figure>
