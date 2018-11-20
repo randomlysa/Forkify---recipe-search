@@ -24,6 +24,9 @@ export const controlSearch = async () => {
     base.renderLoader(base.elements.searchResultsDiv);
 
     try {
+      // Switch to search results slide.
+      state.goTo(0);
+
       // Search for recipes.
       await state.search.getResults();
 
