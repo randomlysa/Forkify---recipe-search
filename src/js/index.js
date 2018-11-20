@@ -17,6 +17,7 @@ import * as base from './views/base';
  * - Current recipe object
  * - Shopping list object
  * - Liked recipes
+ * - Swiper
 */
 const state = {};
 
@@ -105,6 +106,10 @@ const controlRecipe = async () => {
 
   // An id was found, load the recipe.
   if (id) {
+
+    // Switch to recipe slide.
+    state.swiper.slideTo(1)
+
     // Prepare the UI for changes.
     recipeView.removeRecipe();
     base.renderLoader(base.elements.recipe);
@@ -283,22 +288,12 @@ const readSearchFromLocalStorage = () => {
   }
 } // readSearchFromLocalStorage
 
-// init functions below.
-// Search: Read/load state.search from storage on page load.
-window.addEventListener('load', readSearchFromLocalStorage);
-// Likes: Load likes from storage.
-window.addEventListener('load', getLikesFromLocalStorage);
-// Recipe: Load recipe on hashchange and pageload.
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
-
-
-window.onload = function () {
-  //initialize swiper when document ready
+const  setupSwiper = () => {
+  // Initialize swiper on page load.
   const mySwiper = new Swiper ('.swiper-container', {
-    // Optional parameters
     direction: 'horizontal',
-    centeredSlides: true
+    centeredSlides: true,
   });
 
   const goTo1 = () => mySwiper.slideTo(0);;
@@ -309,4 +304,18 @@ window.onload = function () {
   base.elements.showRecipe.addEventListener('click', goTo2);
   base.elements.showCart.addEventListener('click', goTo3);
 
+  // Add swiper to state.
+  state.swiper = document.querySelector('.swiper-container').swiper
+
 };
+
+// init functions below.
+// Set up swiper.
+window.addEventListener('load', setupSwiper)
+// Search: Read/load state.search from storage on page load.
+window.addEventListener('load', readSearchFromLocalStorage);
+// Likes: Load likes from storage.
+window.addEventListener('load', getLikesFromLocalStorage);
+// Recipe: Load recipe on hashchange and pageload.
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
