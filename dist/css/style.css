@@ -354,12 +354,6 @@ body {
     text-align: center;
   }
 
-  @media only screen and (max-width: 800px) {
-      .results {
-        max-height: 40rem;
-        overflow: auto;
-      }}
-
 .recipe {
   background-color: #F9F5F3;
   border-top: 1px solid #fff; }
