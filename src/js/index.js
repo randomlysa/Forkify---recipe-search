@@ -297,14 +297,13 @@ window.onload = function () {
   //initialize swiper when document ready
   const mySwiper = new Swiper ('.swiper-container', {
     // Optional parameters
-    direction: 'vertical',
-    centeredSlides: 'true',
-    loop: true
+    direction: 'horizontal',
+    centeredSlides: true
   });
 
-  const goTo1 = () => mySwiper.slideTo(1);;
-  const goTo2 = () => mySwiper.slideTo(2);;
-  const goTo3 = () => mySwiper.slideTo(3);;
+  const goTo1 = () => mySwiper.slideTo(0);;
+  const goTo2 = () => mySwiper.slideTo(1);;
+  const goTo3 = () => mySwiper.slideTo(2);;
 
   base.elements.showResults.addEventListener('click', goTo1);
   base.elements.showRecipe.addEventListener('click', goTo2);
