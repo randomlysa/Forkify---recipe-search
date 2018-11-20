@@ -89,3 +89,10 @@ const saveSearchToLocalStorage = () => {
   console.log('saving state', state);
   localStorage.setItem('recipe-search', JSON.stringify(state.search));
 } // saveSearchToLocalStorage
+
+// Handle clicks on results > recipes.
+base.elements.searchResultList.addEventListener('click', (e) => {
+  const clickArea = e.target.closest('.results__link');
+  const recipeId = clickArea.dataset.rid;
+  console.log(recipeId)
+});
