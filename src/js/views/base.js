@@ -14,7 +14,7 @@ export const elements = {
   notificationsText: document.querySelector('.notifications__text'),
   showResults: document.querySelector('.menu__results'),
   showRecipe: document.querySelector('.menu__recipe'),
-  showCart: document.querySelector('.menu__cart'),
+  showCart: document.querySelector('.menu__shopping-list'),
   menu: document.querySelector('.menu')
 };
 
