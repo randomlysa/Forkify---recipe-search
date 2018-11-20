@@ -1,3 +1,5 @@
+import Swiper from 'swiper';
+
 // Global app controller
 import Search from './models/Search';
 import Recipe from './models/Recipe';
@@ -9,8 +11,6 @@ import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import * as base from './views/base';
-
-import * as h from  './utils/cssClassHelpers';
 
 /** Global state of the app
  * - Search object
@@ -139,16 +139,12 @@ const controlRecipe = async () => {
         state.likes.isLiked(id)
       );
 
-      // Setup options based on width < || > 800 px.
-      h.setupInitialPage();
-
     } catch (error) {
       console.log(error);
       base.showNotificationMessage('There was an error loading the recipe.');
     }
   }
 };
-
 
 // List Controller
 const controlList = () => {
@@ -294,3 +290,24 @@ window.addEventListener('load', readSearchFromLocalStorage);
 window.addEventListener('load', getLikesFromLocalStorage);
 // Recipe: Load recipe on hashchange and pageload.
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+
+
+window.onload = function () {
+  //initialize swiper when document ready
+  const mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'vertical',
+    centeredSlides: 'true',
+    loop: true
+  });
+
+  const goTo1 = () => mySwiper.slideTo(1);;
+  const goTo2 = () => mySwiper.slideTo(2);;
+  const goTo3 = () => mySwiper.slideTo(3);;
+
+  base.elements.showResults.addEventListener('click', goTo1);
+  base.elements.showRecipe.addEventListener('click', goTo2);
+  base.elements.showCart.addEventListener('click', goTo3);
+
+};

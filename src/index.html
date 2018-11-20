@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <title>forkify // Search over 1,000,000 recipes</title>
@@ -64,44 +65,46 @@
             <h2 class="menu__cart">Cart</h2>
         </div>
 
-        <div class="results">
-            <ul class="results__list">
-                <!--
-                    search results
-                -->
-            </ul>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="results swiper-slide">
+                    <ul class="results__list">
+                        <!--
+                            search results
+                        -->
+                    </ul>
 
-            <div class="results__pages">
-                <!--
-                    pagination for search results
-                -->
-            </div>
+                    <div class="results__pages">
+                        <!--
+                            pagination for search results
+                        -->
+                    </div>
+                </div>
+
+                <div class="recipe swiper-slide">
+                    <!--
+                        recipe
+                    -->
+                </div>
+
+                <div class="shopping swiper-slide">
+                    <h2 class="heading-2">My Shopping List</h2>
+                    <ul class="shopping__list">
+                        <!--
+                            shopping list
+                        -->
+                    </ul>
+                </div> <!-- shopping -->
+
+            </div> <!-- swiper wrapper -->
+        </div> <!-- swiper container -->
+
+    </div> <!-- container -->
+
+    <div class="copyright">
+            &copy; by Jonas Schmedtmann. Powered by
+            <a href="http://food2fork.com" target="_blank" class="link">Food2Fork.com</a>.
         </div>
-
-
-        <div class="recipe">
-            <!--
-                recipe
-            -->
-        </div>
-
-        <div class="shopping">
-            <h2 class="heading-2">My Shopping List</h2>
-
-            <ul class="shopping__list">
-                <!--
-                    shopping list
-                -->
-            </ul>
-
-            <div class="copyright">
-                &copy; by Jonas Schmedtmann. Powered by
-                <a href="http://food2fork.com" target="_blank" class="link">Food2Fork.com</a>.
-            </div>
-
-        </div> <!-- shopping -->
-    </div>
-
 </body>
 
 </html>
