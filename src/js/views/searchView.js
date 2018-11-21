@@ -50,7 +50,7 @@ const renderRecipe = recipe => {
 };
 
 const renderError = () => {
-  const markup = `<li><h4 class="results__noresults">No results found, sorry!</h4></li>`;
+  const markup = `<li><h1 class="results__noresults">No results found, sorry!</h1></li>`;
 
   elements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };

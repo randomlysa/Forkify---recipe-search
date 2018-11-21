@@ -335,7 +335,7 @@ body {
   .likes__btn--next {
     float: right; }
   .results__noresults {
-    font-size: 1.3rem;
+    font-size: 3rem;
     color: #F59A83;
     text-transform: uppercase;
     font-weight: 600;
