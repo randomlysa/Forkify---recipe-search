@@ -65,6 +65,10 @@ export const controlSearchFromState = () => {
       base.showNotificationMessage('There was an error searching.');
     } // try/catch
   } // if query
+  else {
+    // Nothing found in state. Show a message that prompts a search.
+    searchView.renderResults(null);
+  }
 } // controlSearchFromState
 
 // Do a search.

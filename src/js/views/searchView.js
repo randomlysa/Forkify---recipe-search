@@ -49,8 +49,15 @@ const renderRecipe = recipe => {
   elements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
 
-const renderError = () => {
-  const markup = `<li><h1 class="results__noresults">No results found, sorry!</h1></li>`;
+const renderMessage = (message) => {
+  let human_message;
+  if (message === 'tryasearch') {
+    human_message = 'Looks like there\'s nothing here - try a search!';
+  }
+  if (message === 'noresults') {
+    human_message = 'No results found, sorry!';
+  }
+  const markup = `<li><h1 class="results__noresults">${human_message}</h1></li>`;
 
   elements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
@@ -98,13 +105,18 @@ const renderButtons = (page, numberOfResults, resultsPerPage) => {
   elements.searchResultsPages.insertAdjacentHTML('afterbegin', button);
 };
 
+// Render recipes, pagination.
 export const renderResults = (recipes, page = 1, resultsPerPage = 10) => {
   const start = (page - 1) * resultsPerPage;
   const end = page * resultsPerPage;
 
-  // No recipes found.
-  if (recipes.length === 0) {
-    renderError();
+  // Page was loaded, no search results were found in localstorage, show a
+  // message saying 'try a search.'
+  if (!recipes) {
+    renderMessage('tryasearch');
+  // A search happened but no results came back.
+  } else if (recipes && recipes.length === 0) {
+    renderMessage('noresults');
   } else {
     // Render (partial) list of recipies.
     recipes.slice(start, end).forEach(renderRecipe);

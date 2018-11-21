@@ -20,8 +20,10 @@ const readSearchFromLocalStorage = () => {
   // Restore search if storage exists.
   if (storage) {
     state.search = storage;
-    controlSearchFromState();
   }
+  // This will either render the recipes that were in state or show a message
+  // that there's nothing here - previously the page was blank on a first run.
+  controlSearchFromState();
 }; // readSearchFromLocalStorage
 
 // init functions below.
