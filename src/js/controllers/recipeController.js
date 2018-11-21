@@ -57,7 +57,11 @@ export const controlRecipe = async () => {
       console.log(error);
       base.showNotificationMessage('There was an error loading the recipe.');
     }
+  } else { // if (id)
+    // Show a message saying 'nothing here.'
+    recipeView.renderRecipe();
   }
+
 };
 
 // Handling recipe button clicks: increase/decrease servings, add items to
