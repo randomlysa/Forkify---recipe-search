@@ -8,8 +8,13 @@ module.exports = {
     filename: 'js/bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    proxy: {
+      '/api': 'http://localhost/forkify/php/'
+    }
   },
+  // devtool: 'cheap-module-eval-source-map',
+  // devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -28,8 +33,15 @@ module.exports = {
         // for swiper
         test: /\.js$/, // Check for all js files
         exclude: /node_modules\/(?!(dom7|ssr-window|swiper)\/).*/,
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       }
     ]
-  }
+  },
+  optimization: {
+       splitChunks: {
+         chunks: 'all'
+       }
+    }
 };
