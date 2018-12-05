@@ -1,128 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/swiper.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <title>forkify // Search over 1,000,000 recipes</title>
-</head>
+  </head>
 
-<body>
-
-    <div class="notifications">
-            <div class="notifications__text"></div>
-    </div>
+  <body>
+    <div class="notifications"><div class="notifications__text"></div></div>
 
     <div class="container">
-        <header class="header">
-            <img src="img/logo.png" alt="Logo" class="header__logo">
-            <form class="search">
-                <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
-                <button class="btn search__btn">
-                    <svg class="search__icon">
-                        <use href="img/icons.svg#icon-magnifying-glass"></use>
-                    </svg>
-                    <span>Search</span>
-                </button>
-            </form>
-            <div class="likes">
-                <div class="likes__field">
-                    <svg class="likes__icon">
-                        <use href="img/icons.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <div class="likes__panel">
-                    <div class="likes__removeall">
-                        Remove All Recipes
-                    </div>
-                    <ul class="likes__list">
-                        <!--
-                        <li>
-                            <a class="likes__link" href="#23456">
-                                <figure class="likes__fig">
-                                    <img src="img/test-1.jpg" alt="Test">
-                                </figure>
-                                <div class="likes__data">
-                                    <h4 class="likes__name">Pasta with Tomato ...</h4>
-                                    <p class="likes__author">The Pioneer Woman</p>
-                                </div>
-                            </a>
-                        </li>
-                        -->
-                    </ul>
-                </div>
-            </div>
-        </header>
-
-        <div class="breadcrumb__container">
-            <div class="breadcrumb">
-                <a class="menu__results">
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title" data-menu="0">
-                            Results
-                        </span>
-                    </span>
-                </a>
-                <a class="menu__recipe">
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title" data-menu="1">
-                            Recipe
-                        </span>
-                    </span>
-                </a>
-                <a class="menu__shopping-list">
-                    <span class="breadcrumb__inner">
-                        <span class="breadcrumb__title" data-menu="2">
-                            Shopping List
-                        </span>
-                    </span>
-                </a>
-            </div>
+      <header class="header">
+        <img src="img/logo.png" alt="Logo" class="header__logo" />
+        <form class="search">
+          <input
+            type="text"
+            class="search__field"
+            placeholder="Search over 1,000,000 recipes..."
+          />
+          <button class="btn search__btn">
+            <svg class="search__icon">
+              <use href="img/icons.svg#icon-magnifying-glass"></use>
+            </svg>
+            <span>Search</span>
+          </button>
+        </form>
+        <div class="likes">
+          <div class="likes__field">
+            <svg class="likes__icon">
+              <use href="img/icons.svg#icon-heart"></use>
+            </svg>
+          </div>
+          <div class="likes__panel">
+            <div class="likes__removeall">Remove All Recipes</div>
+            <ul class="likes__list">
+              <!--
+                <li>
+                    <a class="likes__link" href="#23456">
+                        <figure class="likes__fig">
+                            <img src="img/test-1.jpg" alt="Test">
+                        </figure>
+                        <div class="likes__data">
+                            <h4 class="likes__name">Pasta with Tomato ...</h4>
+                            <p class="likes__author">The Pioneer Woman</p>
+                        </div>
+                    </a>
+                </li>
+              -->
+            </ul>
+          </div>
         </div>
+      </header>
 
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="results swiper-slide">
-                    <ul class="results__list">
-                        <!--
-                            search results
-                        -->
-                    </ul>
-
-                    <div class="results__pages">
-                        <!--
-                            pagination for search results
-                        -->
-                    </div>
-                </div>
-
-                <div class="recipe swiper-slide">
-                    <!--
-                        recipe
-                    -->
-                </div>
-
-                <div class="shopping swiper-slide">
-                    <h2 class="heading-2">My Shopping List</h2>
-                    <ul class="shopping__list">
-                        <!--
-                            shopping list
-                        -->
-                    </ul>
-                </div> <!-- shopping -->
-
-            </div> <!-- swiper wrapper -->
-        </div> <!-- swiper container -->
-
-        <div class="copyright">
-            &copy; by Jonas Schmedtmann. Powered by
-            <a href="http://food2fork.com" target="_blank" class="link">Food2Fork.com</a>.
+      <div class="breadcrumb__container">
+        <div class="breadcrumb">
+          <a class="menu__results">
+            <span class="breadcrumb__inner">
+              <span class="breadcrumb__title" data-menu="0"> Results </span>
+            </span>
+          </a>
+          <a class="menu__recipe">
+            <span class="breadcrumb__inner">
+              <span class="breadcrumb__title" data-menu="1"> Recipe </span>
+            </span>
+          </a>
+          <a class="menu__shopping-list">
+            <span class="breadcrumb__inner">
+              <span class="breadcrumb__title" data-menu="2">
+                Shopping List
+              </span>
+            </span>
+          </a>
         </div>
-    </div> <!-- container -->
-</body>
+      </div>
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="results swiper-slide">
+            <ul class="results__list">
+              <!-- search results -->
+            </ul>
+
+            <div class="results__pages">
+              <!-- pagination for search results -->
+            </div>
+          </div>
+
+          <div class="recipe swiper-slide"><!-- recipe --></div>
+
+          <div class="shopping swiper-slide">
+            <h2 class="heading-2">My Shopping List</h2>
+            <ul class="shopping__list">
+              <!-- shopping list -->
+            </ul>
+          </div>
+          <!-- shopping -->
+        </div>
+        <!-- swiper wrapper -->
+      </div>
+      <!-- swiper container -->
+
+      <div class="copyright">
+        &copy; by Jonas Schmedtmann. Powered by
+        <a href="http://food2fork.com" target="_blank" class="link"
+          >Food2Fork.com</a
+        >.
+      </div>
+    </div>
+    <!-- container -->
+  </body>
 </html>

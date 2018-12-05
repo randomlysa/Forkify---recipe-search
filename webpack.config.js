@@ -29,7 +29,8 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }, {
+      },
+      {
         // for swiper
         test: /\.js$/, // Check for all js files
         exclude: /node_modules\/(?!(dom7|ssr-window|swiper)\/).*/,
@@ -40,8 +41,8 @@ module.exports = {
     ]
   },
   optimization: {
-       splitChunks: {
-         chunks: 'all'
-       }
+    splitChunks: {
+      chunks: 'all'
     }
+  }
 };

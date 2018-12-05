@@ -25,7 +25,7 @@ export const controlLike = () => {
     // TODO does this matter if it is newLike or state.recipe?
     likesView.renderLike(newLike);
 
-  // User has liked current recipe.
+    // User has liked current recipe.
   } else {
     // Remove like from the state.
     state.likes.deleteLike(currentId);
@@ -38,7 +38,7 @@ export const controlLike = () => {
   }
 
   likesView.toggleLikeMenu(state.likes.getNumberOfLikes());
-}
+};
 
 // Read and render likes from localStorage.
 export const getLikesFromLocalStorage = () => {
@@ -55,7 +55,7 @@ export const getLikesFromLocalStorage = () => {
 // TODO: this doesn't remove the 'heart' that opens the menu or toggle the
 // 'heart' in the individual (open) recipe.
 base.elements.likesRemoveAll.addEventListener('click', () => {
-  const allLikes = document.querySelectorAll(".likes__link");
+  const allLikes = document.querySelectorAll('.likes__link');
   Array.from(allLikes).forEach(like => {
     if (like.href.includes('#')) {
       state.likes.deleteLike(like.href.split('#')[1]);

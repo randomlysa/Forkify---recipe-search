@@ -14,16 +14,15 @@ export const controlRecipe = async () => {
 
   // An id was found, load the recipe.
   if (id) {
-
     // Switch to recipe slide. Use goTo because it marks 'Recipe' as the
     // active item in the menu.
-    state.goTo(1)
+    state.goTo(1);
 
     // Prepare the UI for changes.
     recipeView.removeRecipe();
     base.renderLoader(base.elements.recipe);
 
-    if (state.search) searchView.highlightSelected(id)
+    if (state.search) searchView.highlightSelected(id);
 
     // Create new recipe object.
     state.recipe = new Recipe(id);
@@ -48,20 +47,16 @@ export const controlRecipe = async () => {
 
       // Remove loader image and render the recipe.
       base.removeLoader();
-      recipeView.renderRecipe(
-        state.recipe,
-        state.likes.isLiked(id)
-      );
-
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (error) {
       console.log(error);
       base.showNotificationMessage('There was an error loading the recipe.');
     }
-  } else { // if (id)
+  } else {
+    // if (id)
     // Show a message saying 'nothing here.'
     recipeView.renderRecipe();
   }
-
 };
 
 // Handling recipe button clicks: increase/decrease servings, add items to
@@ -100,7 +95,7 @@ const controlList = () => {
     );
     listView.renderItem(item);
   });
-}
+};
 
 // Handle delete and update list item events.
 base.elements.shopping.addEventListener('click', e => {
@@ -114,7 +109,7 @@ base.elements.shopping.addEventListener('click', e => {
     // Delete from UI.
     listView.deleteItem(id);
 
-  // Handle count update.
+    // Handle count update.
   } else if (e.target.matches('.shopping__count--value')) {
     const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);

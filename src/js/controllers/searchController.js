@@ -40,7 +40,7 @@ export const controlSearch = async () => {
       base.showNotificationMessage('There was an error searching.');
     }
   } // if (query)
-} // controlSearch
+}; // controlSearch
 
 export const controlSearchFromState = () => {
   const query = state.search;
@@ -69,7 +69,7 @@ export const controlSearchFromState = () => {
     // Nothing found in state. Show a message that prompts a search.
     searchView.renderResults(null);
   }
-} // controlSearchFromState
+}; // controlSearchFromState
 
 // Do a search.
 base.elements.searchForm.addEventListener('submit', e => {
@@ -89,17 +89,17 @@ base.elements.searchResultsPages.addEventListener('click', e => {
     // Render results for page 'goToPage.'
     searchView.renderResults(state.search.result, goToPage);
   }
-})
+});
 
 // Save search object to storage (search query and results.)
 const saveSearchToLocalStorage = () => {
   console.log('saving state', state);
   localStorage.setItem('recipe-search', JSON.stringify(state.search));
-} // saveSearchToLocalStorage
+}; // saveSearchToLocalStorage
 
 // Handle clicks on results > recipes.
-base.elements.searchResultList.addEventListener('click', (e) => {
+base.elements.searchResultList.addEventListener('click', e => {
   const clickArea = e.target.closest('.results__link');
   const recipeId = clickArea.dataset.rid;
-  console.log(recipeId)
+  console.log(recipeId);
 });

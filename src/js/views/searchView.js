@@ -28,13 +28,14 @@ export const highlightSelected = id => {
   const currentLink = document.querySelector(`.results__link[href='#${id}']`);
   // currentLink doesn't exist if the recipe id doesn't exist.
   if (currentLink) currentLink.classList.add('results__link--active');
-
-}
+};
 
 const renderRecipe = recipe => {
   const markup = `
     <li>
-      <a class="results__link" data-rid="${recipe.recipe_id}" href="#${recipe.recipe_id}">
+      <a class="results__link" data-rid="${recipe.recipe_id}" href="#${
+    recipe.recipe_id
+  }">
           <figure class="results__fig">
               <img src="${recipe.image_url}" alt="${recipe.title}">
           </figure>
@@ -49,10 +50,10 @@ const renderRecipe = recipe => {
   elements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
 
-const renderMessage = (message) => {
+const renderMessage = message => {
   let human_message;
   if (message === 'tryasearch') {
-    human_message = 'Looks like there\'s nothing here - try a search!';
+    human_message = "Looks like there's nothing here - try a search!";
   }
   if (message === 'noresults') {
     human_message = 'No results found, sorry!';
@@ -69,7 +70,9 @@ const createButton = (currentPage, buttonType) => `
   >
       <svg class="search__icon">
           <use
-            href="img/icons.svg#icon-triangle-${buttonType === 'prev' ? 'left' : 'right'}">
+            href="img/icons.svg#icon-triangle-${
+              buttonType === 'prev' ? 'left' : 'right'
+            }">
           </use>
       </svg>
       <span>
@@ -81,7 +84,7 @@ const createButton = (currentPage, buttonType) => `
 /**
  * Page: starting page
  * numberOfResults: totalNumberOfResults
-*/
+ */
 const renderButtons = (page, numberOfResults, resultsPerPage) => {
   const totalNumberOfPages = Math.ceil(numberOfResults / resultsPerPage);
 
@@ -114,7 +117,7 @@ export const renderResults = (recipes, page = 1, resultsPerPage = 10) => {
   // message saying 'try a search.'
   if (!recipes) {
     renderMessage('tryasearch');
-  // A search happened but no results came back.
+    // A search happened but no results came back.
   } else if (recipes && recipes.length === 0) {
     renderMessage('noresults');
   } else {

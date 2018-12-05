@@ -31,7 +31,7 @@ export const renderLoader = parentElement => {
     </div>
   `;
   parentElement.insertAdjacentHTML('afterbegin', loader);
-}
+};
 
 export const removeLoader = () => {
   const loader = document.querySelector(`.${elementStrings.loader}`);
@@ -39,10 +39,10 @@ export const removeLoader = () => {
 };
 
 export const showNotificationMessage = message => {
-  elements.notificationsText.innerHTML= '';
+  elements.notificationsText.innerHTML = '';
   elements.notificationsText.insertAdjacentHTML('afterbegin', message);
 };
 
 export const hideNotificationMessage = () => {
-  elements.notificationsText.innerHTML= '';
+  elements.notificationsText.innerHTML = '';
 };

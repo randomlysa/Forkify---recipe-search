@@ -11,7 +11,7 @@ import { setupSwiper } from './utils/swiper';
  * - Shopping list object
  * - Liked recipes
  * - goTo (function to switch slides)
-*/
+ */
 
 // Read search from storage and update UI if items exist in storage.
 const readSearchFromLocalStorage = () => {
@@ -28,10 +28,12 @@ const readSearchFromLocalStorage = () => {
 
 // init functions below.
 // Set up swiper.
-window.addEventListener('load', setupSwiper)
+window.addEventListener('load', setupSwiper);
 // Search: Read/load state.search from storage on page load.
 window.addEventListener('load', readSearchFromLocalStorage);
 // Likes: Load likes from storage.
 window.addEventListener('load', getLikesFromLocalStorage);
 // Recipe: Load recipe on hashchange and pageload.
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+['hashchange', 'load'].forEach(event =>
+  window.addEventListener(event, controlRecipe)
+);

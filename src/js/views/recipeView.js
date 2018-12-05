@@ -7,8 +7,10 @@ export const removeRecipe = () => {
 
 const formatCount = count => {
   if (count) {
-
-    const [ int, dec ] = count.toString().split('.').map(number => parseInt(number, 10));
+    const [int, dec] = count
+      .toString()
+      .split('.')
+      .map(number => parseInt(number, 10));
 
     // Example: 1 --> 1
     if (!dec) return count;
@@ -17,13 +19,13 @@ const formatCount = count => {
     if (int === 0) {
       return num2fraction(count);
 
-    // Example: 2.5 --> 2 1/2
+      // Example: 2.5 --> 2 1/2
     } else {
       // Get the decimal. Example: 2.5 --> 0.5.
       const fr = num2fraction(count - int);
       const [num, denom] = fr.split('/');
       // If numerator === denominator (example: 1/1), return int + num/denom.
-      if (num === denom) return int + (num/denom);
+      if (num === denom) return int + num / denom;
       // Otherwise return a fraction.
       return `${int} ${fr}`;
     }
@@ -47,15 +49,17 @@ const createIngredientMarkup = ingredient => `
 
 // Pass in isLiked so heart is rendered correctly.
 export const renderRecipe = (recipe, isLiked) => {
-    let markup;
-    if (!recipe && !isLiked) {
-        markup = `
+  let markup;
+  if (!recipe && !isLiked) {
+    markup = `
             <h1 class="results__noresults">Nothing here - search for a recipe!</h1>
         `;
-    } else {
-        markup = `
+  } else {
+    markup = `
             <figure class="recipe__fig">
-                <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
+                <img src="${recipe.img}" alt="${
+      recipe.title
+    }" class="recipe__img">
                 <h1 class="recipe__title">
                     <span>${recipe.title}</span>
                 </h1>
@@ -66,14 +70,18 @@ export const renderRecipe = (recipe, isLiked) => {
                     <svg class="recipe__info-icon">
                         <use href="img/icons.svg#icon-stopwatch"></use>
                     </svg>
-                    <span class="recipe__info-data recipe__info-data--minutes">${recipe.time}</span>
+                    <span class="recipe__info-data recipe__info-data--minutes">${
+                      recipe.time
+                    }</span>
                     <span class="recipe__info-text"> minutes</span>
                 </div>
                 <div class="recipe__info">
                     <svg class="recipe__info-icon">
                         <use href="img/icons.svg#icon-man"></use>
                     </svg>
-                    <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
+                    <span class="recipe__info-data recipe__info-data--people">${
+                      recipe.servings
+                    }</span>
                     <span class="recipe__info-text"> servings</span>
 
                     <div class="recipe__info-buttons">
@@ -91,14 +99,18 @@ export const renderRecipe = (recipe, isLiked) => {
                 </div>
                 <button class="recipe__love">
                     <svg class="header__likes">
-                        <use href="img/icons.svg#icon-heart${isLiked ? '' :  '-outlined'}"></use>
+                        <use href="img/icons.svg#icon-heart${
+                          isLiked ? '' : '-outlined'
+                        }"></use>
                     </svg>
                 </button>
             </div>
 
             <div class="recipe__ingredients">
                 <ul class="recipe__ingredient-list">
-                    ${recipe.ingredients.map(ingredient => createIngredientMarkup(ingredient)).join('')}
+                    ${recipe.ingredients
+                      .map(ingredient => createIngredientMarkup(ingredient))
+                      .join('')}
                 </ul>
 
                 <button class="btn-small recipe__btn recipe__btn--add">
@@ -113,9 +125,13 @@ export const renderRecipe = (recipe, isLiked) => {
                 <h2 class="heading-2">How to cook it</h2>
                 <p class="recipe__directions-text">
                     This recipe was carefully designed and tested by
-                    <span class="recipe__by">${recipe.author}</span>. Please check out directions at their website.
+                    <span class="recipe__by">${
+                      recipe.author
+                    }</span>. Please check out directions at their website.
                 </p>
-                <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
+                <a class="btn-small recipe__btn" href="${
+                  recipe.url
+                }" target="_blank">
                     <span>Directions</span>
                     <svg class="search__icon">
                         <use href="img/icons.svg#icon-triangle-right"></use>
@@ -123,14 +139,15 @@ export const renderRecipe = (recipe, isLiked) => {
                 </a>
             </div>
         `;
-    }
+  }
 
-    elements.recipe.insertAdjacentHTML('afterbegin', markup);
+  elements.recipe.insertAdjacentHTML('afterbegin', markup);
 };
 
 export const updateServingsIngredients = recipe => {
   // Update servings.
-  document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
+  document.querySelector('.recipe__info-data--people').textContent =
+    recipe.servings;
 
   // Update ingredients.
   const countElements = Array.from(document.querySelectorAll('.recipe__count'));

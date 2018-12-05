@@ -4,7 +4,7 @@ export default class Likes {
   }
 
   addLike(id, title, author, img) {
-    const like = {id, title, author, img};
+    const like = { id, title, author, img };
     this.likes.push(like);
 
     // Save data to localStorage.
@@ -19,7 +19,6 @@ export default class Likes {
 
     // Save data to localStorage.
     this.saveDataToLocalStorage();
-
   } // deleteLike
 
   isLiked(id) {
