@@ -236,6 +236,7 @@ body {
   padding-left: 3rem;
   transition: all 0.3s;
 }
+
 .search:focus-within {
   transform: translateY(-2px);
   box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08);
@@ -647,21 +648,17 @@ body {
   opacity: 1;
   visibility: visible;
 }
-
 .collapsed {
   display: none;
   height: 0;
 }
-
 .swiper-container {
   width: 100%;
 }
-
 .swiper-slide {
   width: 100%;
   height: 100%;
 }
-
 /* breadcrumbs
 https://freefrontend.com/css-breadcrumbs/
 https://codepen.io/iamglynnsmith/pen/BRGjgW */
@@ -673,7 +670,6 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW */
   min-width: 32%;
   padding: 0px;
 }
-
 .breadcrumb {
   display: flex;
   overflow: hidden;
@@ -688,7 +684,6 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW */
   background-color: #fff;
   font-size: 14px;
 }
-
 .breadcrumb a {
   position: relative;
   display: flex;
@@ -701,15 +696,12 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW */
   color: #666;
   cursor: pointer;
 }
-
 .breadcrumb a:first-child {
   padding-left: 15.2px;
 }
-
 .breadcrumb a:last-child {
   padding-right: 15.2px;
 }
-
 .breadcrumb a:after {
   content: '';
   position: absolute;
@@ -724,38 +716,31 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW */
   transform: scale(0.707) rotate(45deg);
   z-index: 1;
 }
-
 .breadcrumb a:last-child:after {
   content: none;
 }
-
 .breadcrumb__inner {
   display: flex;
   flex-direction: column;
   margin: auto;
   z-index: 2;
 }
-
 .breadcrumb__title {
   font-weight: bold;
 }
-
 .breadcrumb a.active,
 .breadcrumb a:hover {
   background: #fbdb89;
   color: white;
 }
-
 .breadcrumb a.active:after,
 .breadcrumb a:hover:after {
   background: #fbdb89;
   color: white;
 }
-
 .breadcrumb--active {
   border-bottom: solid 4px #f7b915;
 }
-
 @media all and (max-width: 1000px) {
   .breadcrumb {
     font-size: 12px;
@@ -765,15 +750,12 @@ https://codepen.io/iamglynnsmith/pen/BRGjgW */
   .breadcrumb__desc {
     display: none;
   }
-
   .breadcrumb {
     height: 38px;
   }
-
   .breadcrumb a {
     padding-left: 25.3333333333px;
   }
-
   .breadcrumb a:after {
     content: '';
     width: 38px;
