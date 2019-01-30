@@ -17,7 +17,6 @@ export default class Recipe {
       this.img = recipeInfo.image_url;
       this.url = recipeInfo.source_url;
       this.ingredients = recipeInfo.ingredients;
-
     } catch (error) {
       console.log(error);
       showNotificationMessage('There was an error loading the recipe.');
@@ -25,14 +24,13 @@ export default class Recipe {
   } // getRecipe
 
   calcTime() {
-
     // Check for ingredients.
     if (!this.ingredients) return;
     // Assuming 15 minutes per 3 ingredients.
     const numberOFIngredients = this.ingredients.length;
     const periods = Math.ceil(numberOFIngredients / 3);
     this.time = periods * 15;
-  };
+  }
 
   calcServings() {
     this.servings = 4;
@@ -40,22 +38,51 @@ export default class Recipe {
 
   parseIngredients() {
     // Search for:
-    const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce',
-      'teaspoons', 'teaspoon', 'cups', 'pounds', 'kilogram', 'gram'];
+    const unitsLong = [
+      'tablespoons',
+      'tablespoon',
+      'ounces',
+      'ounce',
+      'teaspoons',
+      'teaspoon',
+      'cups',
+      'pounds',
+      'kilogram',
+      'gram'
+    ];
     // Replace with:
-    const unitsShort = ['tbps', 'tbps', 'oz', 'oz', 'tsp', 'tsp', 'cup',
-      'pound', 'kg', 'g'];
+    const unitsShort = [
+      'tbps',
+      'tbps',
+      'oz',
+      'oz',
+      'tsp',
+      'tsp',
+      'cup',
+      'pound',
+      'kg',
+      'g'
+    ];
 
     // Search for 'one' and replace with '1', etc.
-    const numbersInWords = ['one', 'two', 'three', 'four', 'five', 'six',
-      'seven', 'eight', 'nine', 'ten'];
+    const numbersInWords = [
+      'one',
+      'two',
+      'three',
+      'four',
+      'five',
+      'six',
+      'seven',
+      'eight',
+      'nine',
+      'ten'
+    ];
     const numbersInInt = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     // Check for ingredients.
     if (!this.ingredients) return;
 
     const newIngredients = this.ingredients.map(item => {
-
       // Uniform units.
       let ingredient = item.toLowerCase();
       unitsLong.forEach((unit, index) => {
@@ -70,8 +97,11 @@ export default class Recipe {
 
       // Convert word numbers to int. Works with id 47744.
       // Example: one small handful of raw pine nuts --> 1 small handful...
-      const wordNumberIndex = arrIng.findIndex(item3 => numbersInWords.includes(item3));
-      if (wordNumberIndex > -1 ) arrIng[wordNumberIndex] = numbersInInt[wordNumberIndex];
+      const wordNumberIndex = arrIng.findIndex(item3 =>
+        numbersInWords.includes(item3)
+      );
+      if (wordNumberIndex > -1)
+        arrIng[wordNumberIndex] = numbersInInt[wordNumberIndex];
 
       // Parse ingredients into count, unit, and ingredient.
       const unitIndex = arrIng.findIndex(item2 => unitsShort.includes(item2));
@@ -125,16 +155,15 @@ export default class Recipe {
     this.ingredients = newIngredients;
   }
 
-  updateServings (type) {
+  updateServings(type) {
     // Servings.
     const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
 
     // Ingredients.
     this.ingredients.forEach(ingredient => {
-      ingredient.count *= (newServings / this.servings);
+      ingredient.count *= newServings / this.servings;
     });
 
     this.servings = newServings;
   }
-
 } // Recipe class
