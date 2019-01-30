@@ -5,6 +5,8 @@ import { controlRecipe } from './controllers/recipeController';
 import { getLikesFromLocalStorage } from './controllers/likeController';
 import { setupSwiper } from './utils/swiper';
 
+import '../css/style.scss';
+
 /** Global state of the app
  * - Search object
  * - Current recipe object
