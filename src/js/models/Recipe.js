@@ -9,7 +9,16 @@ export default class Recipe {
 
   async getRecipe() {
     try {
-      const result = await axios(`${proxy}http://food2fork.com/api/get?key=${key}&rId=${this.id}`);
+      let result;
+      const checkStorage = localStorage.getItem(this.id);
+      if (checkStorage) {
+        result = JSON.parse(checkStorage);
+      } else {
+        result = await axios(
+          `${proxy}http://food2fork.com/api/get?key=${key}&rId=${this.id}`
+        );
+        localStorage.setItem(this.id, JSON.stringify(result));
+      }
 
       const recipeInfo = result.data.recipe;
       this.title = recipeInfo.title;
