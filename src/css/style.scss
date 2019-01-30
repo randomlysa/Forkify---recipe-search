@@ -32,7 +32,6 @@ body {
 
 .container {
   max-width: 120rem;
-  min-width: 76rem;
   margin: 4vw auto;
   background-color: #fff;
   border-radius: 6px;
@@ -218,9 +217,9 @@ body {
 .header {
   grid-area: head;
   background-color: #f9f5f3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 33% 66%;
+  padding: 2rem;
 }
 .header__logo {
   margin-left: 4rem;
@@ -229,6 +228,7 @@ body {
 }
 
 .search {
+  justify-self: end;
   background-color: #fff;
   border-radius: 10rem;
   display: flex;
@@ -664,15 +664,13 @@ body {
 
 /* breadcrumbs
 https://freefrontend.com/css-breadcrumbs/
-https://codepen.io/iamglynnsmith/pen/BRGjgW
-*/
-
+https://codepen.io/iamglynnsmith/pen/BRGjgW */
 .breadcrumb__container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  min-width: 480px;
+  min-width: 32%;
   padding: 0px;
 }
 
