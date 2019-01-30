@@ -39,7 +39,7 @@ body {
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
 
-  grid-template-rows: 12rem 10rem 140rem;
+  grid-template-rows: auto 10rem 140rem;
   grid-template-columns: 100%;
   grid-template-areas:
     'head'
@@ -218,8 +218,13 @@ body {
   grid-area: head;
   background-color: #f9f5f3;
   display: grid;
-  grid-template-columns: 33% 66%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
   padding: 2rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
 }
 .header__logo {
   margin-left: 4rem;
@@ -234,7 +239,18 @@ body {
   display: flex;
   align-items: center;
   padding-left: 3rem;
+  margin-bottom: 2rem;
   transition: all 0.3s;
+
+  grid-column: 1 / -1;
+  justify-self: center;
+
+  &__btn {
+    @media screen and (max-width: 600px) {
+      padding: 1rem;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .search:focus-within {
@@ -247,7 +263,11 @@ body {
   font-family: inherit;
   color: inherit;
   font-size: 1.7rem;
-  width: 30rem;
+  max-width: 30rem;
+  width: 50vw;
+
+  margin-left: 1rem;
+  width: 95vw;
 }
 .search__field:focus {
   outline: none;
@@ -258,8 +278,10 @@ body {
 
 .likes {
   position: relative;
-  align-self: stretch;
   padding: 0 !important;
+  justify-self: end;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
 }
 .likes__field {
   cursor: pointer;
